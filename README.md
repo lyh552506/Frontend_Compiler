@@ -43,3 +43,12 @@ lli ./function_test/test.c.ll
 lli -opaque-pointers ./function_test/test.c.ll
 ```
 
+Right Form:
+
+```less
+//如果存在output会直接打印
+TOTAL: 0H-0M-0S-0us
+//input "echo $?" to check the return number  
+```
+
+Check the **interface**, Go to : 

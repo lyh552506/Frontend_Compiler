@@ -442,7 +442,6 @@ bool IsAllocaPromotable(AllocaInst *AI) {
         return false;
     } else if (GetElementPtrInst *gep =
                    dynamic_cast<GetElementPtrInst *>(user)) {
-      // TODO
       return false;
     } else {
       return false;

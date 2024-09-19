@@ -98,7 +98,7 @@ typedef unsigned int flex_uint32_t;
 
 /* begin standard C++ headers. */
 
-/* TODO: this is always defined, so inline it */
+/* this is always defined, so inline it */
 #define yyconst const
 
 #if defined(__GNUC__) && __GNUC__ >= 3
