@@ -33,7 +33,6 @@ add_executable(SYSY-compiler main.cpp)
 add_subdirectory(${PROJECT_SOURCE_DIR}/yacc)
 add_subdirectory(${PROJECT_SOURCE_DIR}/ir)
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib)
-add_subdirectory(${PROJECT_SOURCE_DIR}/test_infrastructure)
 # add_subdirectory(${PROJECT_SOURCE_DIR}/Target)
 
 target_link_libraries(SYSY-compiler Yacc Lib opt Analysis) #Target
