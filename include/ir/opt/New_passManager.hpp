@@ -12,38 +12,8 @@ class ModulePassManager;
 enum OptLevel { O0 = 0, O1 = 1, O2 = 2, O3 = 3 };
 enum PassName {
   mem2reg = 4,
-  pre,
   constprop,
-  dce,
-  loopsimplify,
-  simplifycfg,
-  ece,
-  Inline,
-  global2local,
-  reassociate,
-  cse,
-  lcssa,
-  licm,
-  looprotate,
-  loopdeletion,
-  deadargselimination,
-  storeonlyglobalelimination,
-  local2global,
-  parallel,
-  loopUnroll,
-  gepcombine,
-  tailrecurseEliminator,
-  condmerge,
-  gepevaluate,
-  blockmerge,
-  Dse,
-  loadeliminaion,
-  selfstoreelimination,
-  cachelookup,
-  scalarstrengthreduce,
-  consthoist,
-  select2branch,
-  arithopt,
+  dce
 };
 
 static struct option long_options[] = {
@@ -120,6 +90,4 @@ private:
   Module *module;
   Function *curfunc;
   bool modified = true;
-  bool other = false;
-  bool HasRunCondMerge = false;
 };

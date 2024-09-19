@@ -182,12 +182,8 @@ class BinaryInst:public User
     bool IsCmpInst(){return  (op-Op_Add) > 7;}
     void print()final;
     void SetOperand(int index,Value* val);
-    void ChangeAtomic(bool _atomic){Atomic=_atomic;}
-    bool IsAtomic(){return Atomic;}
     std::string GetOperation();
     Operation getopration();
-    Operation GetReversedOperation(BinaryInst::Operation ope);
-    Operation GetInvertedOperation(BinaryInst::Operation ope);
     void setoperation(Operation _op){op=_op;}
     static BinaryInst* CreateInst(Operand _A,Operation __op,Operand _B,User* place=nullptr);
 };
@@ -326,7 +322,6 @@ class BasicBlock:public Value,public mylist<BasicBlock,User>,public list_node<Fu
     bool EndWithBranch();
     void RemovePredBB(BasicBlock* pred);
     virtual void clear()override;
-    int LoopDepth=0;
     int num=0;
     bool visited=false;
     bool reachable=false;

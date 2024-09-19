@@ -98,12 +98,9 @@ class Value
     void print();
     InnerDataType GetTypeEnum();
     virtual Type* GetType();
-    bool Negative_tag = false;
-    bool Change = false;
     void SetType(Type* _ty){ tp = _ty;}
     void add_user(Use* __data);
     virtual bool isConst(){return false;}
-    void RAUW(Value* val); //ReplaceAllUseWith
     void SetName(std::string newname);
     virtual std::string GetName();
     UserList& GetUserlist(){return userlist;};
@@ -113,13 +110,14 @@ class Value
     bool isConstZero();
     bool isConstOne();
     int GetUserListSize(){return GetUserlist().GetSize();}
-    std::unordered_set<Function*> ReadFunc;
     template<typename T>
     T* as(){return dynamic_cast<T*>(this);}
+
+    void RAUW(Value* val); //ReplaceAllUseWith
+
 };
+
 using Operand=Value*;
-// class Constant:public User
-// {};
 class User:public Value,public list_node<BasicBlock,User>
 {
   public:
@@ -184,8 +182,6 @@ class User:public Value,public list_node<BasicBlock,User>
     std::vector<UsePtr>& Getuselist(){return this->uselist;}
     int GetUseIndex(Use* Op);
     inline Operand GetOperand(int i){return uselist[i]->GetValue();}
-    bool Alive = false;
-    bool HasSideEffect();
     void RSUW(int,Operand);
     void RSUW(Use* u,Operand);
     inline OpID GetInstId(){ return id; }

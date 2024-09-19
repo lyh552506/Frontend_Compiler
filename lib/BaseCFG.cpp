@@ -180,63 +180,6 @@ bool User::IsBinary() {
   return false;
 }
 
-bool User::HasSideEffect() {
-  if (auto bin = dynamic_cast<BinaryInst *>(this)) {
-    if (bin->IsAtomic())
-      return true;
-  }
-  if(IsTerminateInst())
-    return true;
-  if (dynamic_cast<StoreInst *>(this)) {
-    return true;
-  }
-  if(auto binary = dynamic_cast<BinaryInst*>(this))
-  {
-    if(binary->IsAtomic())
-      return true;
-  }
-  if (dynamic_cast<CallInst *>(this)) {
-    std::string name = this->Getuselist()[0]->usee->GetName();
-    if (name == "getint" || name == "getch" || name == "getfloat" ||
-        name == "getfarray" || name == "putint" || name == "putfloat" ||
-        name == "putarray" || name == "putfarray" || name == "putf" ||
-        name == "getarray" || name == "putch" || name == "_sysy_starttime" ||
-        name == "_sysy_stoptime" || name == "llvm.memcpy.p0.p0.i32")
-      return true;
-    Function *func =
-        dynamic_cast<Function *>(this->Getuselist()[0]->GetValue());
-    if (func) {
-      if (func->HasSideEffect || func->tag != Function::Normal)
-        return true;
-      for (auto it = func->begin(); it != func->end(); ++it) {
-        BasicBlock *block = *it;
-        for (auto iter = block->begin(); iter != block->end(); ++iter) {
-          if (dynamic_cast<CallInst *>(*iter)) {
-            Function *Func =
-                dynamic_cast<Function *>((*iter)->Getuselist()[0]->usee);
-            if (Func && Func->HasSideEffect)
-              return true;
-          }
-        }
-      }
-    }
-  }
-  if (dynamic_cast<GetElementPtrInst *>(this)) {
-    auto &users = this->GetUserlist();
-    for (auto user_ : users) {
-      User *user = user_->GetUser();
-      if (user->HasSideEffect())
-        return true;
-      else
-        return false;
-    }
-  }
-  if (dynamic_cast<RetInst *>(this))
-    return true;
-  if (this->GetUserlist().is_empty())
-    return false;
-  return false;
-}
 int User::GetUseIndex(Use *Op) {
   for (int i = 0; i < uselist.size(); i++) {
     if (uselist[i].get() == Op)

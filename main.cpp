@@ -35,19 +35,11 @@ int main(int argc, char **argv) {
   yy::parser parse;
   parse();
   Singleton<CompUnit *>()->codegen();
-// #ifdef SYSY_ENABLE_MIDDLE_END
   auto PM = std::make_unique<_PassManager>();
   PM->DecodeArgs(argc, argv);
-// #ifdef TEST
   PM->RunOnTest();
-// #elif defined(LEVEL)
-  // PM->RunOnLevel();
-// #else
-//   assert(0);
-// #endif
   Singleton<Module>().Test();
   fflush(stdout);
   fclose(stdout);
-
   return 0;
 }
