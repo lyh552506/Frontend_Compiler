@@ -51,4 +51,4 @@ TOTAL: 0H-0M-0S-0us
 //input "echo $?" to check the return number  
 ```
 
-Check the **interface**, Go to : 
+Check the **interface**, Go to : [部分接口文档](https://github.com/lyh552506/Frontend_Compiler/blob/main/doc/doc.md)
