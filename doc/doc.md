@@ -93,3 +93,23 @@ for(auto iter=block->begin();iter!=block->end();++iter)
 {...}
 ```
 
+## 遍历UserList、UseList
+
+Every value has it's UserList, but only User (like Instruction can have UseList, Eg: a Const number do not have use)
+
+```c++
+//if "%a" is a BinaryInst: %a = add %1, %2; %b=sub %a,%2
+//遍历Use
+for(auto use:a->GetUselist){
+   //记住use只是一个边的数据结构，我们需要从use中找到对应的Value
+    auto x1=use->GetUser();//返回use边对应的user：%a
+    auto x2=use->GetValue();//返回use边对应的value：%1或%2
+}
+//遍历User
+for(auto use:a->Getuserlist()){
+    //变量的user同样是通过边的关系承载
+    auto x1=use->GetValue();//返回%a本身
+    auto x2=use->GetUser(); //返回%a的user %b
+}
+```
+
