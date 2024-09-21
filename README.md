@@ -52,3 +52,35 @@ TOTAL: 0H-0M-0S-0us
 ```
 
 Check the **interface**, Go to : [部分接口文档](https://github.com/lyh552506/Frontend_Compiler/blob/main/doc/doc.md)
+
+## Test Your Code
+
+Check the file : `./test.ipynb`
+
+```python
+#.......
+compiler_path = "./build/SYSY-compiler"
+test_folder="./testcases"
+pass_args=["--mem2reg"]  #填写自己完成后的Pass：constprop、dce
+
+# grab all the testcases
+
+# find files recursively
+test_list = []
+for root, dirs, files in os.walk(test_folder):
+#.........
+```
+
+Run this script, If your code is correct:
+
+```python
+Compiler Error: Total: 0
+Runtime Error: Total: 0
+Timeout Error: Total: 0
+Wrong Answer: Total: 0
+TimeOut Function:0
+Bad Test: Total: 0
+Accepted: Total: 100   #Check this
+TOTAL TIME:0.0
+```
+
