@@ -16,12 +16,12 @@ use **git to clone**
 
 ```shell
 git clone https://github.com/llvm/llvm-project.git
-mkdir build && cd build
-cmake -GNinja ..
-ninja
+mkdir build 
+cmake -Bbuild -GNinja
+cmake --build build
 ```
 
-now you will find this compiler in ./build
+now you will find this compiler in `./build/`
 
 ## how to use this compiler
 
