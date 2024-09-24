@@ -15,7 +15,7 @@ sudo apt install -y cmake ninja-build build-essential llvm clang
 use **git to clone**
 
 ```shell
-git clone https://github.com/llvm/llvm-project.git
+git clone https://github.com/lyh552506/Frontend_Compiler.git
 mkdir build 
 cmake -Bbuild -GNinja
 cmake --build build
