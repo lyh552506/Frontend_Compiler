@@ -8,9 +8,7 @@ BackendTest/
 uploadfolder
 testcases_output
 testcases_c
-test.ipynb
 .cache/clangd/index
 Testing
-./test.ipynb
 ./CMakeLists.txt
 ./error.log
